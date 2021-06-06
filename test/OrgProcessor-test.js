@@ -20,8 +20,8 @@ This is text.
 const a = 1;
 #+end_src
       `);
-      const script = result.children[0];
-      assert.equal(script.type, 'block');
+      const src = result.children[0];
+      assert.equal(src.type, 'block');
     });
 
     it('text should paragraph', () => {
@@ -40,6 +40,15 @@ This is comment.
       `);
       const comment = result.children[0];
       assert.equal(comment.type, 'block');
+    });
+
+    it('~~ should text.code', () => {
+      const result = parse(`
+~const a = 1;~
+      `);
+      const paragraph = result.children[0];
+      const code = paragraph.children[0];
+      assert.equal(code.type, 'text.code');
     });
   });
 });
