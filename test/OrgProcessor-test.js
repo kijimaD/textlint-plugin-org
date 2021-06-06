@@ -9,13 +9,12 @@ describe('OrgProcessor-test', () => {
   describe('#parse', () => {
     it('should return AST', () => {
       const result = parse(`
-** heading
-text
+This is text.
       `);
       assert(result.type === 'document');
     });
 
-    it('script should block', () => {
+    it('begin_src should block', () => {
       const result = parse(`
 #+begin_src
 const a = 1;
@@ -23,6 +22,24 @@ const a = 1;
       `);
       const script = result.children[0];
       assert.equal(script.type, 'block');
+    });
+
+    it('text should paragraph', () => {
+      const result = parse(`
+This is text.
+      `);
+      const text = result.children[0];
+      assert.equal(text.type, 'paragraph');
+    });
+
+    it('begin_comment should block', () => {
+      const result = parse(`
+#+begin_comment
+This is comment.
+#+end_comment
+      `);
+      const comment = result.children[0];
+      assert.equal(comment.type, 'block');
     });
   });
 });
