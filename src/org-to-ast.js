@@ -59,6 +59,7 @@ export function parse(org) {
       if (typeof node.type === "undefined") {
         node.type = "UNKNOWN";
       }
+      delete node.parent
       // map `range`, `loc` and `raw` to node
       if (typeof node.position === "object") {
         let position = node.position;

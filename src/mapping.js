@@ -16,12 +16,12 @@ export const tagNameToType = {
 export const nodeTypes = {
   'document': 'Document',
   'paragraph': 'Paragraph',
-  'block': 'BlockQuote',
+  'quote': 'BlockQuote',
   'listItem': 'ListItem',
   'list': 'List',
   'Bullet': 'Bullet', // no need?
   'heading': 'Header',
-  'code': 'CodeBlock',
+  'block': 'CodeBlock',
   'comment': 'Comment',
   'HtmlBlock': 'Html',
   'ReferenceDef': 'ReferenceDef',

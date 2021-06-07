@@ -1,5 +1,6 @@
 import assert from 'power-assert';
-import { parse } from 'orga';
+import { parse } from '../src/org-to-ast';
+// import { parse } from 'orga';
 import { TextLintCore } from 'textlint';
 import path from 'path';
 import TextlintRuleNoTodo from 'textlint-rule-no-todo';
@@ -12,7 +13,7 @@ describe('OrgProcessor-test', () => {
       const result = parse(`
 This is text.
       `);
-      assert(result.type === 'document');
+      assert(result.type === 'Document');
     });
 
     it('begin_src should block', () => {
@@ -22,7 +23,7 @@ const a = 1;
 #+end_src
       `);
       const src = result.children[0];
-      assert.equal(src.type, 'block');
+      assert.equal(src.type, 'CodeBlock');
     });
 
     it('text should paragraph', () => {
@@ -30,7 +31,7 @@ const a = 1;
 This is text.
       `);
       const text = result.children[0];
-      assert.equal(text.type, 'paragraph');
+      assert.equal(text.type, 'Paragraph');
     });
 
     it('begin_comment should block', () => {
