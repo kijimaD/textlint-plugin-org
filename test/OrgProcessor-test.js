@@ -1,9 +1,10 @@
 import assert from 'power-assert';
 import { parse } from 'orga';
-// import OrgPlugin from '../src/index';
-// import { TextLintCore } from 'textlint';
+import { TextLintCore } from 'textlint';
+import path from 'path';
+import TextlintRuleNoTodo from 'textlint-rule-no-todo';
+import OrgPlugin from '../src/index';
 // const { orgToPlainText } = OrgPlugin.Processor;
-// import path from 'path';
 
 describe('OrgProcessor-test', () => {
   describe('#parse', () => {
@@ -49,6 +50,28 @@ This is comment.
       const paragraph = result.children[0];
       const code = paragraph.children[0];
       assert.equal(code.type, 'text.code');
+    });
+  });
+
+  describe('OrgPlugin', () => {
+    let textlint;
+    context('when target file is a Org', () => {
+      beforeEach(() => {
+        textlint = new TextLintCore();
+        textlint.setupPlugins({
+          org: OrgPlugin,
+        });
+        textlint.setupRules({
+          'no-todo': TextlintRuleNoTodo,
+        });
+      });
+      it('should report error', () => {
+        const fixturePath = path.join(__dirname, '/fixtures/test.org');
+        return textlint.lintFile(fixturePath).then((results) => {
+          assert(results.messages.length > 0);
+          assert(results.filePath === fixturePath);
+        });
+      });
     });
   });
 });
