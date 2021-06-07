@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { parse } from 'orga';
+import { parse } from "./org-to-ast";
 
 export default class OrgProcessor {
   constructor(config) {
