@@ -1,7 +1,8 @@
 import assert from 'power-assert';
 import { TextLintCore } from 'textlint';
 import path from 'path';
-import TextlintRuleNoTodo from 'textlint-rule-no-todo';
+import TextlintRuleMaxComma from 'textlint-rule-max-comma';
+
 import { parse } from '../src/org-to-ast';
 // import { parse } from 'orga';
 import OrgPlugin from '../src/index';
@@ -63,7 +64,7 @@ This is comment.
           org: OrgPlugin,
         });
         textlint.setupRules({
-          'no-todo': TextlintRuleNoTodo,
+          'textlint-rule-max-comma': TextlintRuleMaxComma,
         });
       });
       it('should report lint error', () => {
