@@ -7,33 +7,33 @@ function removeUnusedProperties(node) {
   if (typeof node !== 'object') {
     return;
   }
-  ['position'].forEach(function (key) {
+  ['position'].forEach((key) => {
     if (node.hasOwnProperty(key)) {
       delete node[key];
     }
   });
 }
+
 function mapNodeType(node, parent) {
   if (parent) {
-    let parentNode = parent.parent.node;
+    const parentNode = parent.parent.node;
     if (parentNode.tagName === 'script' || parentNode.tagName === 'style') {
       return 'CodeBlock';
     }
   }
   if (node.tagName && node.type === 'element') {
-    let mappedType = tagNameToType[node.tagName];
+    const mappedType = tagNameToType[node.tagName];
     if (mappedType) {
       // p => Paragraph...
       return mappedType;
-    } else {
-      // other element is 'Org'
-      return 'Org';
     }
-  } else {
-    // text => Str
-    return nodeTypes[node.type];
+    // other element is 'Org'
+    return 'Org';
   }
+
+  return nodeTypes[node.type];
 }
+
 export function parse(org) {
   const ast = orga(org);
   const src = new StructuredSource(org);
@@ -59,17 +59,17 @@ export function parse(org) {
       if (typeof node.type === 'undefined') {
         node.type = 'UNKNOWN';
       }
-      delete node.parent
+      delete node.parent;
       // map `range`, `loc` and `raw` to node
       if (typeof node.position === 'object') {
-        let position = node.position;
+        const position = node.position;
         // TxtNode's line start with 1
         // TxtNode's column start with 0
-        let positionCompensated = {
-          start: {line: position.start.line, column: position.start.column - 1},
-          end: {line: position.end.line, column: position.end.column - 1}
+        const positionCompensated = {
+          start: { line: position.start.line, column: position.start.column - 1 },
+          end: { line: position.end.line, column: position.end.column - 1 }
         };
-        let range = src.locationToRange(positionCompensated);
+        const range = src.locationToRange(positionCompensated);
         node.loc = positionCompensated;
         node.range = range;
         node.raw = org.slice(range[0], range[1]);
