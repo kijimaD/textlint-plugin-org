@@ -1,7 +1,3 @@
-export const tagNameToType = {
-
-};
-
 export const nodeTypes = {
   document: 'Document',
   paragraph: 'Paragraph',
