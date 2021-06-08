@@ -1,9 +1,10 @@
 import assert from 'power-assert';
-import { parse } from '../src/org-to-ast';
-// import { parse } from 'orga';
 import { TextLintCore } from 'textlint';
 import path from 'path';
 import TextlintRuleNoTodo from 'textlint-rule-no-todo';
+import TextlintRuleMaxNumberOfLines from 'textlint-rule-max-number-of-lines'
+import { parse } from '../src/org-to-ast';
+// import { parse } from 'orga';
 import OrgPlugin from '../src/index';
 // const { orgToPlainText } = OrgPlugin.Processor;
 
@@ -16,7 +17,7 @@ This is text.
       assert(result.type === 'Document');
     });
 
-    it('begin_src should block', () => {
+    it('begin_src should CodeBlock', () => {
       const result = parse(`
 #+begin_src
 const a = 1;
@@ -26,7 +27,7 @@ const a = 1;
       assert.equal(src.type, 'CodeBlock');
     });
 
-    it('text should paragraph', () => {
+    it('text should Paragraph', () => {
       const result = parse(`
 This is text.
       `);
@@ -41,7 +42,7 @@ This is comment.
 #+end_comment
       `);
       const comment = result.children[0];
-      assert.equal(comment.type, 'block');
+      assert.equal(comment.type, 'CodeBlock');
     });
 
     it('~~ should text.code', () => {
@@ -50,7 +51,7 @@ This is comment.
       `);
       const paragraph = result.children[0];
       const code = paragraph.children[0];
-      assert.equal(code.type, 'text.code');
+      assert.equal(code.type, 'Code');
     });
   });
 
@@ -66,7 +67,7 @@ This is comment.
           'no-todo': TextlintRuleNoTodo,
         });
       });
-      it('should report error', () => {
+      it('should report lint error', () => {
         const fixturePath = path.join(__dirname, '/fixtures/test.org');
         return textlint.lintFile(fixturePath).then((results) => {
           assert(results.messages.length > 0);

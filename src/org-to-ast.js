@@ -26,7 +26,7 @@ function mapNodeType(node, parent) {
       // p => Paragraph...
       return mappedType;
     } else {
-      // other element is "Html"
+      // other element is "Org"
       return "Org";
     }
   } else {
@@ -35,7 +35,7 @@ function mapNodeType(node, parent) {
   }
 }
 export function parse(org) {
-  const ast = orga('** head');
+  const ast = orga(org);
   const src = new StructuredSource(org);
   const tr = traverse(ast);
   tr.forEach(function (node) {
@@ -81,6 +81,5 @@ export function parse(org) {
     }
     removeUnusedProperties(node);
   });
-  console.log(ast)
   return ast;
 }

@@ -27,6 +27,7 @@ export const nodeTypes = {
   'ReferenceDef': 'ReferenceDef',
   'horizontalRule': 'HorizontalRule',
   // inline block
+  'text.code': 'Code',
   'text': 'Str',
   'break': 'Break',
   'emphasis': 'Emphasis',
