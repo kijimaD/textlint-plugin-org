@@ -2,7 +2,6 @@ import assert from 'power-assert';
 import { TextLintCore } from 'textlint';
 import path from 'path';
 import TextlintRuleNoTodo from 'textlint-rule-no-todo';
-import TextlintRuleMaxNumberOfLines from 'textlint-rule-max-number-of-lines'
 import { parse } from '../src/org-to-ast';
 // import { parse } from 'orga';
 import OrgPlugin from '../src/index';
