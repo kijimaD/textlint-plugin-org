@@ -51,6 +51,7 @@
         "power-assert": "^1.6.1",
         "rehype-stringify": "^8.0.0",
         "reorg-parse": "^2.3.16",
+        "structured-source": "^3.0.2",
         "textlint": "^12.0.0",
         "textlint-plugin-html": "^0.2.0",
         "textlint-plugin-org": "github:kijimaD/textlint-plugin-org",
