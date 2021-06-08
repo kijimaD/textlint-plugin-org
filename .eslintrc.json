@@ -1,7 +1,9 @@
 {
     "parser": "babel-eslint",
     "rules": {
-        "indent": "error"
+        "import/prefer-default-export": "off",
+        "func-names": "off",
+        "no-param-reassign": "off"
     },
     "extends": "airbnb-base",
     "env": {
