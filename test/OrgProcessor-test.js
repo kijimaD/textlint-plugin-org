@@ -67,11 +67,19 @@ This is comment.
           'textlint-rule-max-comma': TextlintRuleMaxComma,
         });
       });
+
       it('should report lint error', () => {
-        const fixturePath = path.join(__dirname, '/fixtures/test.org');
+        const fixturePath = path.join(__dirname, '/fixtures/lint-error.org');
         return textlint.lintFile(fixturePath).then((results) => {
           assert(results.messages.length > 0);
           assert(results.filePath === fixturePath);
+        });
+      });
+
+      it('should not comma check inside the code block.', () => {
+        const fixturePath = path.join(__dirname, '/fixtures/codeblock-test.org');
+        return textlint.lintFile(fixturePath).then((results) => {
+          assert(results.messages.length === 0);
         });
       });
     });
