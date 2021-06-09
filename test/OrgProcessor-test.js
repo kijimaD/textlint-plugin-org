@@ -17,6 +17,14 @@ This is text.
       assert(result.type === 'Document');
     });
 
+    it('heading should Header', () => {
+      const result = parse(`
+** Heading
+      `);
+      const target = result.children[0];
+      assert.equal(target.type, 'Header');
+    });
+
     it('begin_src should CodeBlock', () => {
       const result = parse(`
 #+begin_src
