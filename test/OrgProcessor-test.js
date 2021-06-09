@@ -29,8 +29,10 @@ This is text.
       const result = parse(`
 - List item
       `);
-      const target = result.children[0];
-      assert.equal(target.type, 'List');
+      const list = result.children[0];
+      const listItem = list.children[0];
+      assert.equal(list.type, 'List');
+      assert.equal(listItem.type, 'ListItem');
     });
 
     it('begin_src should CodeBlock', () => {

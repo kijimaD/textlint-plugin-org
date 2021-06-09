@@ -1,8 +1,9 @@
 export const nodeTypes = {
   document: 'Document',
-  headline: 'Header',
-  list: 'List',
   paragraph: 'Paragraph',
+  list: 'List',
+  'list.item': 'ListItem',
+  headline: 'Header',
   block: 'CodeBlock',
   // inline block
   'text.plain': 'Str',
