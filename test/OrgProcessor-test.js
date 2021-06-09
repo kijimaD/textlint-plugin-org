@@ -30,8 +30,8 @@ This is text.
   const a = 1;
 #+end_src
       `);
-      const src = result.children[0];
-      assert.equal(src.type, 'CodeBlock');
+      const target = result.children[0];
+      assert.equal(target.type, 'CodeBlock');
     });
 
     it('begin_comment should block', () => {
@@ -40,8 +40,8 @@ This is text.
   This is comment.
 #+end_comment
       `);
-      const comment = result.children[0];
-      assert.equal(comment.type, 'CodeBlock');
+      const target = result.children[0];
+      assert.equal(target.type, 'CodeBlock');
     });
 
     it('begin_quote should block', () => {
@@ -58,11 +58,11 @@ This is text.
       const result = parse(`
 This is text.
       `);
-      const text = result.children[0];
-      assert.equal(text.type, 'Paragraph');
+      const target = result.children[0];
+      assert.equal(target.type, 'Paragraph');
     });
 
-    it('~~ should text.code', () => {
+    it('inline code should Code', () => {
       const result = parse(`
 ~const a = 1;~
       `);
