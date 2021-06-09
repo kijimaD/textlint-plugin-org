@@ -1,33 +1,13 @@
 import { parse as orga } from 'orga';
 import traverse from 'traverse';
 import StructuredSource from 'structured-source';
-import { nodeTypes, tagNameToType } from './mapping';
+import { nodeTypes } from './mapping';
 
 function removeUnusedProperties(node) {
   if (typeof node !== 'object') {
     return;
   }
   delete node.position;
-}
-
-function mapNodeType(node, parent) {
-  if (parent) {
-    const parentNode = parent.parent.node;
-    if (parentNode.tagName === 'script' || parentNode.tagName === 'style') {
-      return 'CodeBlock';
-    }
-  }
-  if (node.tagName && node.type === 'element') {
-    const mappedType = tagNameToType[node.tagName];
-    if (mappedType) {
-      // p => Paragraph...
-      return mappedType;
-    }
-    // other element is 'Org'
-    return 'Org';
-  }
-
-  return nodeTypes[node.type];
 }
 
 export function parse(org) {
@@ -40,7 +20,7 @@ export function parse(org) {
 
       // AST node has type and position
       if (node.type && node.position) {
-        node.type = mapNodeType(node, this.parent);
+        node.type = nodeTypes[node.type];
       }
 
       if (typeof node.type === 'undefined') {
@@ -63,8 +43,8 @@ export function parse(org) {
       }
 
       // map `url` to Link node
-      if (node.type === 'Link' && typeof node.properties.href !== 'undefined') {
-        node.url = node.properties.href;
+      if (node.type === 'Link' && typeof node.value !== 'undefined') {
+        node.url = node.value;
       }
     }
     removeUnusedProperties(node);

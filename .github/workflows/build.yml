@@ -1,8 +1,8 @@
-name: Lint
+name: Build
 on: [push, pull_request]
 jobs:
   test:
-    name: "Lint on Node.js ${{ matrix.node-version }}"
+    name: "Build on Node.js ${{ matrix.node-version }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,5 +16,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: npm install
-      - name: Lint
-        run: npm run lint
+      - name: Build
+        run: npm run build
