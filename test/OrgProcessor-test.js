@@ -27,14 +27,6 @@ const a = 1;
       assert.equal(src.type, 'CodeBlock');
     });
 
-    it('text should Paragraph', () => {
-      const result = parse(`
-This is text.
-      `);
-      const text = result.children[0];
-      assert.equal(text.type, 'Paragraph');
-    });
-
     it('begin_comment should block', () => {
       const result = parse(`
 #+begin_comment
@@ -43,6 +35,14 @@ This is comment.
       `);
       const comment = result.children[0];
       assert.equal(comment.type, 'CodeBlock');
+    });
+
+    it('text should Paragraph', () => {
+      const result = parse(`
+This is text.
+      `);
+      const text = result.children[0];
+      assert.equal(text.type, 'Paragraph');
     });
 
     it('~~ should text.code', () => {
