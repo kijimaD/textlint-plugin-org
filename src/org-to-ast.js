@@ -43,8 +43,8 @@ export function parse(org) {
       }
 
       // map `url` to Link node
-      if (node.type === 'Link' && typeof node.properties.href !== 'undefined') {
-        node.url = node.properties.href;
+      if (node.type === 'Link' && typeof node.value !== 'undefined') {
+        node.url = node.value;
       }
     }
     removeUnusedProperties(node);

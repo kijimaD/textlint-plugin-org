@@ -10,4 +10,5 @@ export const nodeTypes = {
   'text.plain': 'Str',
   'text.code': 'Code',
   'text.bold': 'Emphasis',
+  link: 'Link',
 };

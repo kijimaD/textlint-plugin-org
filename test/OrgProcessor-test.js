@@ -109,6 +109,16 @@ This is text.
       const emphasis = paragraph.children[0];
       assert.equal(emphasis.type, 'Emphasis');
     });
+
+    it('link should Link', () => {
+      const result = parse(`
+[[http://example.com/][Example Domain]]
+      `);
+      const paragraph = result.children[0];
+      const link = paragraph.children[0];
+      assert.equal(link.type, 'Link');
+      assert.equal(link.url, 'http://example.com/');
+    });
   });
 
   describe('OrgPlugin', () => {
