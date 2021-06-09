@@ -100,6 +100,15 @@ This is text.
       const code = paragraph.children[0];
       assert.equal(code.type, 'Code');
     });
+
+    it('emphasis text should Emphasis', () => {
+      const result = parse(`
+*This is text.*
+      `);
+      const paragraph = result.children[0];
+      const emphasis = paragraph.children[0];
+      assert.equal(emphasis.type, 'Emphasis');
+    });
   });
 
   describe('OrgPlugin', () => {

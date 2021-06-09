@@ -9,4 +9,5 @@ export const nodeTypes = {
   // inline block
   'text.plain': 'Str',
   'text.code': 'Code',
+  'text.bold': 'Emphasis',
 };
