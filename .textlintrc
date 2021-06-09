@@ -3,6 +3,6 @@
         "org"
     ],
     "rules": {
-        "preset-ja-technical-writing": true,
+        "textlint-rule-max-comma": true,
     }
 }

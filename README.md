@@ -3,15 +3,42 @@
 [![lint](https://github.com/kijimaD/textlint-plugin-org/actions/workflows/lint.yml/badge.svg)](https://github.com/kijimaD/textlint-plugin-org/actions/workflows/lint.yml)
 # textlint-plugin-org
 
-## Usage
+Add Org mode support for [textlint](https://github.com/textlint/textlint "textlint").
+
+What is textlint plugin? Please see https://github.com/textlint/textlint/blob/master/docs/plugin.md
 
 ## Install
 
-```
-npm install
+```shell
+$ npm install textlint-plugin-org
 ```
 
-## Test
+## Usage
+
+Manually add text plugin to do following:
+
+```json
+{
+    "plugins": [
+        "org"
+    ]
+}
 ```
-npm run test
+
+Lint Org file with textlint
+
+```shell
+$ textlint test.org
+```
+
+## Tests
+
+```
+$ npm run test
+```
+
+## Lint
+
+```
+$ npm run lint
 ```
