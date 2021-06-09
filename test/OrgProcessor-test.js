@@ -35,6 +35,14 @@ This is text.
       assert.equal(listItem.type, 'ListItem');
     });
 
+    it('horizontal should HorizontalDef', () => {
+      const result = parse(`
+-----
+      `);
+      const target = result.children[0];
+      assert.equal(target.type, 'HorizontalDef');
+    });
+
     it('begin_src should CodeBlock', () => {
       const result = parse(`
 #+begin_src

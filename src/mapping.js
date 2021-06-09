@@ -5,6 +5,7 @@ export const nodeTypes = {
   'list.item': 'ListItem',
   headline: 'Header',
   block: 'CodeBlock',
+  hr: 'HorizontalDef',
   // inline block
   'text.plain': 'Str',
   'text.code': 'Code',
