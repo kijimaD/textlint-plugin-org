@@ -24,6 +24,14 @@ This is text.
       assert.equal(target.type, 'Header');
     });
 
+    it('list item should List', () => {
+      const result = parse(`
+- List item
+      `);
+      const target = result.children[0];
+      assert.equal(target.type, 'List');
+    });
+
     it('begin_src should CodeBlock', () => {
       const result = parse(`
 #+begin_src
@@ -34,7 +42,7 @@ This is text.
       assert.equal(target.type, 'CodeBlock');
     });
 
-    it('begin_comment should block', () => {
+    it('begin_comment should Codeblock', () => {
       const result = parse(`
 #+begin_comment
   This is comment.
@@ -44,7 +52,7 @@ This is text.
       assert.equal(target.type, 'CodeBlock');
     });
 
-    it('begin_quote should block', () => {
+    it('begin_quote should Codeblock', () => {
       const result = parse(`
 #+begin_quote
   This is quote.
