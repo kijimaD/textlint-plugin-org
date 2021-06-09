@@ -20,8 +20,9 @@ This is text.
       const result = parse(`
 ** Heading
       `);
-      const target = result.children[0];
-      assert.equal(target.type, 'Header');
+      const section = result.children[0];
+      const header = section.children[0];
+      assert.equal(header.type, 'Header');
     });
 
     it('list item should List', () => {

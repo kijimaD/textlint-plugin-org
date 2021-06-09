@@ -1,6 +1,6 @@
 export const nodeTypes = {
   document: 'Document',
-  section: 'Header',
+  headline: 'Header',
   list: 'List',
   paragraph: 'Paragraph',
   block: 'CodeBlock',
