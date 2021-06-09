@@ -1,4 +1,4 @@
-name: test
+name: Test
 on: [push, pull_request]
 jobs:
   test:
@@ -18,5 +18,3 @@ jobs:
         run: npm install
       - name: Test
         run: npm test
-      - name: Build
-        run: npm run build
