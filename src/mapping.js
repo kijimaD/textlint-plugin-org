@@ -5,5 +5,6 @@ export const nodeTypes = {
   paragraph: 'Paragraph',
   block: 'CodeBlock',
   // inline block
+  'text.plain': 'Str',
   'text.code': 'Code',
 };

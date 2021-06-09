@@ -71,6 +71,17 @@ This is text.
       assert.equal(target.type, 'Paragraph');
     });
 
+    // inline
+
+    it('inline text should Str', () => {
+      const result = parse(`
+This is text.
+      `);
+      const paragraph = result.children[0];
+      const text = paragraph.children[0];
+      assert.equal(text.type, 'Str');
+    });
+
     it('inline code should Code', () => {
       const result = parse(`
 ~const a = 1;~
