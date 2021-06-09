@@ -4,7 +4,6 @@ import path from 'path';
 import TextlintRuleMaxComma from 'textlint-rule-max-comma';
 
 import { parse } from '../src/org-to-ast';
-// import { parse } from 'orga';
 import OrgPlugin from '../src/index';
 // const { orgToPlainText } = OrgPlugin.Processor;
 
@@ -28,7 +27,7 @@ This is text.
     it('begin_src should CodeBlock', () => {
       const result = parse(`
 #+begin_src
-const a = 1;
+  const a = 1;
 #+end_src
       `);
       const src = result.children[0];
@@ -38,11 +37,21 @@ const a = 1;
     it('begin_comment should block', () => {
       const result = parse(`
 #+begin_comment
-This is comment.
+  This is comment.
 #+end_comment
       `);
       const comment = result.children[0];
       assert.equal(comment.type, 'CodeBlock');
+    });
+
+    it('begin_quote should block', () => {
+      const result = parse(`
+#+begin_quote
+  This is quote.
+#+end_quote
+      `);
+      const target = result.children[0];
+      assert.equal(target.type, 'CodeBlock');
     });
 
     it('text should Paragraph', () => {
