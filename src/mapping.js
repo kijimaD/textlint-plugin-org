@@ -11,4 +11,5 @@ export const nodeTypes = {
   'text.code': 'Code',
   'text.bold': 'Emphasis',
   link: 'Link',
+  footnote: 'FootnoteReference',
 };

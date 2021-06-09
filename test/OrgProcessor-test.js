@@ -119,6 +119,14 @@ This is text.
       assert.equal(link.type, 'Link');
       assert.equal(link.url, 'http://example.com/');
     });
+
+    it('footnote should FootnoteReference', () => {
+      const result = parse(`
+[fn:1] This is a footnote
+      `);
+      const target = result.children[0];
+      assert.equal(target.type, 'FootnoteReference');
+    });
   });
 
   describe('OrgPlugin', () => {
