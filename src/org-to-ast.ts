@@ -1,16 +1,17 @@
 import { parse as orga } from 'orga';
 import traverse from 'traverse';
-import * as StructuredSource from 'structured-source';
+import StructuredSource from 'structured-source';
 import { nodeTypes } from './mapping';
+import { TxtNode } from '@textlint/ast-node-types';
 
-function removeUnusedProperties(node) {
+function removeUnusedProperties(node: TxtNode) {
   if (typeof node !== 'object') {
     return;
   }
   delete node.position;
 }
 
-export function parse(org) {
+export function parse(org: string) {
     const ast = orga(org);
     console.log(ast)
   const src = new StructuredSource(org);
@@ -21,7 +22,7 @@ export function parse(org) {
 
       // AST node has type and position
       if (node.type && node.position) {
-        node.type = nodeTypes[node.type];
+        node.type = nodeTypes[node.type as keyof typeof nodeTypes];
       }
 
       if (typeof node.type === 'undefined') {

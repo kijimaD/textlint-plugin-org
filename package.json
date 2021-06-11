@@ -21,10 +21,10 @@
         "test": "test"
     },
     "scripts": {
-        "build": "NODE_ENV=production babel src --out-dir lib --source-maps",
-        "watch": "babel src --out-dir lib --watch --source-maps",
+        "build": "tsc -b && tsc -b tsconfig.json",
         "prepublish": "npm run --if-present build",
-        "test": "mocha --require @babel/register test/*test.js",
+        "test": "mocha \"test/**/*.{js,ts}\"",
+        "watch": "tsc -b --watch",
         "lint": "npx eslint src/*.js test/*.js"
     },
     "dependencies": {
@@ -51,8 +51,8 @@
         "unified-stream": "^1.0.6"
     },
     "devDependencies": {
-        "typescript": "^4.3.2",
         "@textlint/ast-tester": "^12.0.0",
+        "@types/traverse": "^0.6.32",
         "babel-preset-jsdoc-to-assert": "^5.0.0",
         "babel-preset-power-assert": "^3.0.0",
         "eslint": "^7.28.0",
@@ -63,6 +63,8 @@
         "textlint": "^12.0.0",
         "textlint-plugin-html": "^0.2.0",
         "textlint-rule-max-comma": "^2.0.2",
-        "textlint-rule-no-todo": "^2.0.1"
+        "textlint-rule-no-todo": "^2.0.1",
+        "ts-node-test-register": "^10.0.0",
+        "typescript": "^4.3.2"
     }
 }
