@@ -47,11 +47,11 @@
         "reorg-parse": "^2.3.16",
         "structured-source": "^3.0.2",
         "traverse": "^0.6.6",
-        "typescript": "^4.3.2",
         "unified": "^9.2.1",
         "unified-stream": "^1.0.6"
     },
     "devDependencies": {
+        "typescript": "^4.3.2",
         "@textlint/ast-tester": "^12.0.0",
         "babel-preset-jsdoc-to-assert": "^5.0.0",
         "babel-preset-power-assert": "^3.0.0",

@@ -1,6 +1,6 @@
 import { parse as orga } from 'orga';
 import traverse from 'traverse';
-import StructuredSource from 'structured-source';
+import * as StructuredSource from 'structured-source';
 import { nodeTypes } from './mapping';
 
 function removeUnusedProperties(node) {
@@ -11,7 +11,8 @@ function removeUnusedProperties(node) {
 }
 
 export function parse(org) {
-  const ast = orga(org);
+    const ast = orga(org);
+    console.log(ast)
   const src = new StructuredSource(org);
   const tr = traverse(ast);
   tr.forEach(function (node) {
@@ -49,5 +50,6 @@ export function parse(org) {
     }
     removeUnusedProperties(node);
   });
-  return ast;
+    console.log(ast)
+    return ast;
 }
