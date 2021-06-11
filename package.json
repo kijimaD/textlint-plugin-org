@@ -47,6 +47,7 @@
         "reorg-parse": "^2.3.16",
         "structured-source": "^3.0.2",
         "traverse": "^0.6.6",
+        "ts-node": "^10.0.0",
         "unified": "^9.2.1",
         "unified-stream": "^1.0.6"
     },
