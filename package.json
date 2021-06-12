@@ -25,7 +25,7 @@
         "prepublish": "npm run --if-present build",
         "test": "mocha \"test/**/*.{js,ts}\"",
         "watch": "tsc -b --watch",
-        "lint": "npx eslint src/*.js test/*.js"
+        "lint": "npx eslint src/*.ts test/*.js"
     },
     "dependencies": {
         "@babel/cli": "^7.14.3",
@@ -56,6 +56,8 @@
         "@textlint/kernel": "^12.0.0",
         "@types/power-assert": "^1.5.3",
         "@types/traverse": "^0.6.32",
+        "@typescript-eslint/eslint-plugin": "^4.26.1",
+        "@typescript-eslint/parser": "^4.26.1",
         "babel-preset-jsdoc-to-assert": "^5.0.0",
         "babel-preset-power-assert": "^3.0.0",
         "eslint": "^7.28.0",
