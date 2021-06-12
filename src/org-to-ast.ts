@@ -11,7 +11,7 @@ function removeUnusedProperties(node: TxtNode) {
   delete node.position;
 }
 
-export function parse(org: string): nodeTypes {
+export function parse(org: string): any {
   const ast = orga(org);
   const src = new StructuredSource(org);
   const tr = traverse(ast);
