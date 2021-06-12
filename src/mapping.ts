@@ -1,15 +1,17 @@
+import { ASTNodeTypes } from "@textlint/ast-node-types";
+
 export const nodeTypes = {
-  document: 'Document',
-  paragraph: 'Paragraph',
-  list: 'List',
-  'list.item': 'ListItem',
-  headline: 'Header',
-  block: 'CodeBlock',
-  hr: 'HorizontalDef',
+  document: ASTNodeTypes.Document,
+  paragraph: ASTNodeTypes.Paragraph,
+  list: ASTNodeTypes.List,
+  'list.item': ASTNodeTypes.ListItem,
+  headline: ASTNodeTypes.Header,
+  block: ASTNodeTypes.CodeBlock,
+  hr: ASTNodeTypes.HorizontalRule,
   // inline block
-  'text.plain': 'Str',
-  'text.code': 'Code',
-  'text.bold': 'Emphasis',
-  link: 'Link',
+  'text.plain': ASTNodeTypes.Str,
+  'text.code': ASTNodeTypes.Code,
+  'text.bold': ASTNodeTypes.Emphasis,
+  link: ASTNodeTypes.Link,
   footnote: 'FootnoteReference',
 };

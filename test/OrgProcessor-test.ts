@@ -38,7 +38,7 @@ This is text.
 -----
       `);
       const target = result.children[0];
-      assert.equal(target.type, 'HorizontalDef');
+      assert.equal(target.type, 'HorizontalRule');
     });
 
     it('begin_src should CodeBlock', () => {
@@ -127,7 +127,7 @@ This is text.
     });
   });
 
-  const lintFile = (filePath, options = true) => {
+  const lintFile = (filePath: string, options = true) => {
     const kernel = new TextlintKernel();
     const text = fs.readFileSync(filePath, 'utf-8');
     return kernel.lintText(text, {
@@ -145,7 +145,7 @@ This is text.
   };
 
   describe('OrgPlugin', () => {
-    context('when target file is a Org', () => {
+    describe('when target file is a Org', () => {
       it('should report lint error', () => {
         const fixturePath = path.join(__dirname, '/fixtures/lint-error.org'); // eslint-disable-line
         return lintFile(fixturePath).then((results) => {
