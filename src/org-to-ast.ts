@@ -13,7 +13,6 @@ function removeUnusedProperties(node: TxtNode) {
 
 export function parse(org: string) {
     const ast = orga(org);
-    console.log(ast)
   const src = new StructuredSource(org);
   const tr = traverse(ast);
   tr.forEach(function (node) {
@@ -51,6 +50,5 @@ export function parse(org: string) {
     }
     removeUnusedProperties(node);
   });
-    console.log(ast)
     return ast;
 }

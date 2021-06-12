@@ -5,7 +5,6 @@ import TextlintRuleMaxComma from 'textlint-rule-max-comma';
 
 import { parse } from '../src/org-to-ast';
 import OrgPlugin from '../src/index';
-// const { orgToPlainText } = OrgPlugin.Processor;
 
 describe('OrgProcessor-test', () => {
   describe('#parse', () => {
