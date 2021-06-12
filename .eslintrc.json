@@ -3,7 +3,8 @@
     "rules": {
         "import/prefer-default-export": "off",
         "func-names": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "global-require": "off"
     },
     "extends": "airbnb-base",
     "env": {
