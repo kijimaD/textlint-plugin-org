@@ -2,8 +2,8 @@ import assert from 'power-assert';
 import path from 'path';
 import { TextlintKernel } from '@textlint/kernel';
 import fs from 'fs';
-import { parse } from '../src/org-to-ast.ts';
-import OrgPlugin from '../src/index.ts';
+import { parse } from '../src/org-to-ast';
+import OrgPlugin from '../src/index';
 
 describe('OrgProcessor-test', () => {
   describe('#parse', () => {
@@ -140,14 +140,14 @@ This is text.
           options,
         },
       ],
-      rules: [{ ruleId: 'textlint-rule-max-comma', rule: require('textlint-rule-max-comma').default }],
+      rules: [{ ruleId: 'textlint-rule-max-comma', rule: require('textlint-rule-max-comma').default }], // eslint-disable-line
     });
   };
 
   describe('OrgPlugin', () => {
     context('when target file is a Org', () => {
       it('should report lint error', () => {
-        const fixturePath = path.join(__dirname, '/fixtures/lint-error.org');
+        const fixturePath = path.join(__dirname, '/fixtures/lint-error.org'); // eslint-disable-line
         return lintFile(fixturePath).then((results) => {
           assert(results.messages.length > 0);
           assert(results.filePath === fixturePath);
@@ -155,7 +155,7 @@ This is text.
       });
 
       it('should not comma check inside the code block.', () => {
-        const fixturePath = path.join(__dirname, '/fixtures/codeblock-test.org');
+        const fixturePath = path.join(__dirname, '/fixtures/codeblock-test.org'); // eslint-disable-line
         return lintFile(fixturePath).then((results) => {
           assert(results.messages.length === 0);
         });
