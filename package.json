@@ -30,7 +30,6 @@
     "dependencies": {
         "@orgajs/reorg": "^2.4.8",
         "@orgajs/reorg-rehype": "^2.4.8",
-        "@types/date-fns": "^2.6.0",
         "orga": "^2.4.8",
         "rehype-stringify": "^8.0.0",
         "reorg-parse": "^2.3.16",
@@ -39,22 +38,19 @@
         "unified": "^9.2.1"
     },
     "devDependencies": {
-        "ts-node": "^10.0.0",
-        "date-fns": "^2.22.1",
-        "npm-check-updates": "^11.6.0",
         "@textlint/ast-tester": "^12.0.0",
         "@textlint/kernel": "^12.0.0",
         "@types/power-assert": "^1.5.3",
         "@types/traverse": "^0.6.32",
         "@typescript-eslint/eslint-plugin": "^4.26.1",
         "@typescript-eslint/parser": "^4.26.1",
+        "date-fns": "^2.22.1",
         "eslint": "^7.28.0",
         "eslint-plugin-import": "^2.23.4",
-        "fs": "^0.0.1-security",
-        "jsdoc-to-assert": "^2.8.0",
         "mocha": "^8.4.0",
-        "power-assert": "^1.6.1",
+        "npm-check-updates": "^11.6.0",
         "textlint-rule-max-comma": "^2.0.2",
+        "ts-node": "^10.0.0",
         "ts-node-test-register": "^10.0.0",
         "typescript": "^4.3.2"
     }
