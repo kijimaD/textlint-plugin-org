@@ -1,4 +1,4 @@
-import * as OrgProcessor from './OrgProcessor';
+import { OrgProcessor } from './OrgProcessor';
 
 export default {
   Processor: OrgProcessor,
