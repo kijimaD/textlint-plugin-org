@@ -33,11 +33,6 @@ Lint Org file with textlint
 $ textlint test.org
 ```
 
-## TODO
-
-- Heavy dependency
-- Old package warnings
-
 ## Tests
 
 ```
