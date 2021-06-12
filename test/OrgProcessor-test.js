@@ -1,11 +1,9 @@
 import assert from 'power-assert';
-import { TextLintCore } from 'textlint';
 import path from 'path';
-import TextlintRuleMaxComma from 'textlint-rule-max-comma';
-
+import { TextlintKernel } from '@textlint/kernel';
+import fs from 'fs';
 import { parse } from '../src/org-to-ast';
 import OrgPlugin from '../src/index';
-// const { orgToPlainText } = OrgPlugin.Processor;
 
 describe('OrgProcessor-test', () => {
   describe('#parse', () => {
@@ -129,30 +127,36 @@ This is text.
     });
   });
 
-  describe('OrgPlugin', () => {
-    let textlint;
-    context('when target file is a Org', () => {
-      beforeEach(() => {
-        textlint = new TextLintCore();
-        textlint.setupPlugins({
-          org: OrgPlugin,
-        });
-        textlint.setupRules({
-          'textlint-rule-max-comma': TextlintRuleMaxComma,
-        });
-      });
+  const lintFile = (filePath, options = true) => {
+    const kernel = new TextlintKernel();
+    const text = fs.readFileSync(filePath, 'utf-8');
+    return kernel.lintText(text, {
+      filePath,
+      ext: '.org',
+      plugins: [
+        {
+          pluginId: 'org',
+          plugin: OrgPlugin,
+          options,
+        },
+      ],
+      rules: [{ ruleId: 'textlint-rule-max-comma', rule: require('textlint-rule-max-comma').default }], // eslint-disable-line
+    });
+  };
 
+  describe('OrgPlugin', () => {
+    context('when target file is a Org', () => {
       it('should report lint error', () => {
-        const fixturePath = path.join(__dirname, '/fixtures/lint-error.org');
-        return textlint.lintFile(fixturePath).then((results) => {
+        const fixturePath = path.join(__dirname, '/fixtures/lint-error.org'); // eslint-disable-line
+        return lintFile(fixturePath).then((results) => {
           assert(results.messages.length > 0);
           assert(results.filePath === fixturePath);
         });
       });
 
       it('should not comma check inside the code block.', () => {
-        const fixturePath = path.join(__dirname, '/fixtures/codeblock-test.org');
-        return textlint.lintFile(fixturePath).then((results) => {
+        const fixturePath = path.join(__dirname, '/fixtures/codeblock-test.org'); // eslint-disable-line
+        return lintFile(fixturePath).then((results) => {
           assert(results.messages.length === 0);
         });
       });

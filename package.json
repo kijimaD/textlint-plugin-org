@@ -21,47 +21,32 @@
         "test": "test"
     },
     "scripts": {
-        "build": "NODE_ENV=production babel src --out-dir lib --source-maps",
-        "watch": "babel src --out-dir lib --watch --source-maps",
+        "build": "tsc -b && tsc -b tsconfig.json",
         "prepublish": "npm run --if-present build",
-        "test": "mocha --require @babel/register test/*test.js",
-        "lint": "npx eslint src/*.js test/*.js"
+        "test": "mocha \"test/**/*.{js,ts}\"",
+        "watch": "tsc -b --watch",
+        "lint": "npx eslint src/*.ts test/*.js"
     },
     "dependencies": {
-        "@babel/cli": "^7.14.3",
-        "@babel/core": "^7.14.3",
-        "@babel/eslint-plugin": "^7.13.16",
-        "@babel/preset-env": "^7.14.4",
-        "@babel/register": "^7.13.16",
-        "@orgajs/reorg": "^2.4.8",
-        "@orgajs/reorg-rehype": "^2.4.8",
-        "@types/date-fns": "^2.6.0",
-        "babel-eslint": "^10.1.0",
-        "babel-preset-es2015": "^6.24.1",
-        "babel-register": "^6.26.0",
-        "date-fns": "^2.22.1",
-        "eslint-config-airbnb-base": "^14.2.1",
-        "npm-check-updates": "^11.6.0",
         "orga": "^2.4.8",
-        "rehype-stringify": "^8.0.0",
-        "reorg-parse": "^2.3.16",
-        "structured-source": "^3.0.2",
-        "traverse": "^0.6.6",
-        "unified": "^9.2.1",
-        "unified-stream": "^1.0.6"
+        "structured-source": "^3.0.2"
     },
     "devDependencies": {
         "@textlint/ast-tester": "^12.0.0",
-        "babel-preset-jsdoc-to-assert": "^5.0.0",
-        "babel-preset-power-assert": "^3.0.0",
+        "@textlint/kernel": "^12.0.0",
+        "@types/power-assert": "^1.5.3",
+        "@types/traverse": "^0.6.32",
+        "@typescript-eslint/eslint-plugin": "^4.26.1",
+        "@typescript-eslint/parser": "^4.26.1",
+        "date-fns": "^2.22.1",
         "eslint": "^7.28.0",
         "eslint-plugin-import": "^2.23.4",
-        "jsdoc-to-assert": "^2.8.0",
         "mocha": "^8.4.0",
         "power-assert": "^1.6.1",
-        "textlint": "^12.0.0",
-        "textlint-plugin-html": "^0.2.0",
         "textlint-rule-max-comma": "^2.0.2",
-        "textlint-rule-no-todo": "^2.0.1"
+        "traverse": "^0.6.6",
+        "ts-node": "^10.0.0",
+        "ts-node-test-register": "^10.0.0",
+        "typescript": "^4.3.2"
     }
 }
