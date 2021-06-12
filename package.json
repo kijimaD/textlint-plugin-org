@@ -25,7 +25,7 @@
         "prepublish": "npm run --if-present build",
         "test": "mocha \"test/**/*.{js,ts}\"",
         "watch": "tsc -b --watch",
-        "lint": "npx eslint src/*.ts test/*.js"
+        "lint": "npx eslint src/*.ts"
     },
     "dependencies": {
         "orga": "^2.4.8",
