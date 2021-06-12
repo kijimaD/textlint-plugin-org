@@ -127,7 +127,7 @@ This is text.
     });
   });
 
-    const lintFile = (filePath: string, options = true) => {
+  const lintFile = (filePath: string, options = true) => {
     const kernel = new TextlintKernel();
     const text = fs.readFileSync(filePath, 'utf-8');
     return kernel.lintText(text, {
