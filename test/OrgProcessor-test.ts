@@ -38,7 +38,7 @@ This is text.
 -----
       `);
       const target = result.children[0];
-      assert.equal(target.type, 'HorizontalDef');
+      assert.equal(target.type, 'HorizontalRule');
     });
 
     it('begin_src should CodeBlock', () => {
