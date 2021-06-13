@@ -5,13 +5,15 @@ import fs from 'fs';
 import { parse } from '../src/org-to-ast';
 import OrgPlugin from '../src/index';
 
+const Syntax = require("../src/mapping").nodeTypes
+
 describe('OrgProcessor-test', () => {
   describe('#parse', () => {
     it('should return AST', () => {
       const result = parse(`
 This is text.
       `);
-      assert(result.type === 'Document');
+      assert(result.type === Syntax.document);
     });
 
     it('heading should Header', () => {
@@ -20,7 +22,7 @@ This is text.
       `);
       const section = result.children[0];
       const header = section.children[0];
-      assert.equal(header.type, 'Header');
+      assert.equal(header.type, Syntax.headline);
     });
 
     it('list item should List', () => {
@@ -30,7 +32,7 @@ This is text.
       const list = result.children[0];
       const listItem = list.children[0];
       assert.equal(list.type, 'List');
-      assert.equal(listItem.type, 'ListItem');
+      assert.equal(listItem.type, Syntax['list.item']);
     });
 
     it('horizontal should HorizontalDef', () => {
@@ -38,7 +40,7 @@ This is text.
 -----
       `);
       const target = result.children[0];
-      assert.equal(target.type, 'HorizontalRule');
+      assert.equal(target.type, Syntax.hr);
     });
 
     it('begin_src should CodeBlock', () => {
@@ -48,7 +50,7 @@ This is text.
 #+end_src
       `);
       const target = result.children[0];
-      assert.equal(target.type, 'CodeBlock');
+      assert.equal(target.type, Syntax.block);
     });
 
     it('begin_comment should Codeblock', () => {
@@ -58,7 +60,7 @@ This is text.
 #+end_comment
       `);
       const target = result.children[0];
-      assert.equal(target.type, 'CodeBlock');
+      assert.equal(target.type, Syntax.block);
     });
 
     it('begin_quote should Codeblock', () => {
@@ -68,7 +70,7 @@ This is text.
 #+end_quote
       `);
       const target = result.children[0];
-      assert.equal(target.type, 'CodeBlock');
+      assert.equal(target.type, Syntax.block);
     });
 
     it('text should Paragraph', () => {
@@ -76,7 +78,7 @@ This is text.
 This is text.
       `);
       const target = result.children[0];
-      assert.equal(target.type, 'Paragraph');
+      assert.equal(target.type, Syntax.paragraph);
     });
 
     // inline
@@ -87,7 +89,7 @@ This is text.
       `);
       const paragraph = result.children[0];
       const text = paragraph.children[0];
-      assert.equal(text.type, 'Str');
+      assert.equal(text.type, Syntax['text.plain']);
     });
 
     it('inline code should Code', () => {
@@ -96,7 +98,7 @@ This is text.
       `);
       const paragraph = result.children[0];
       const code = paragraph.children[0];
-      assert.equal(code.type, 'Code');
+      assert.equal(code.type, Syntax['text.code']);
     });
 
     it('emphasis text should Emphasis', () => {
@@ -105,7 +107,7 @@ This is text.
       `);
       const paragraph = result.children[0];
       const emphasis = paragraph.children[0];
-      assert.equal(emphasis.type, 'Emphasis');
+      assert.equal(emphasis.type, Syntax['text.bold']);
     });
 
     it('link should Link', () => {
@@ -114,7 +116,7 @@ This is text.
       `);
       const paragraph = result.children[0];
       const link = paragraph.children[0];
-      assert.equal(link.type, 'Link');
+      assert.equal(link.type, Syntax.link);
       assert.equal(link.url, 'http://example.com/');
     });
 
@@ -123,7 +125,7 @@ This is text.
 [fn:1] This is a footnote
       `);
       const target = result.children[0];
-      assert.equal(target.type, 'FootnoteReference');
+      assert.equal(target.type, Syntax.footnote);
     });
   });
 
