@@ -14,8 +14,7 @@ function removeUnusedProperties(node: TxtNode) {
 export function parse(org: string): any {
   const ast = orga(org);
   const src = new StructuredSource(org);
-  const tr = traverse(ast);
-  tr.forEach(function (node) {
+  traverse(ast).forEach(function (node) {
     if (this.notLeaf) {
       delete node.parent;
 
