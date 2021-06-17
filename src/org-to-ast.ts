@@ -2,20 +2,13 @@ import { parse as orga } from 'orga';
 import traverse from 'traverse';
 import StructuredSource from 'structured-source';
 import { nodeTypes } from './mapping';
-import { TxtNode } from '@textlint/ast-node-types';
-
-function removeUnusedProperties(node: TxtNode) {
-  if (typeof node !== 'object') {
-    return;
-  }
-  delete node.position;
-}
+import { ASTNodeTypes, TxtNode } from "@textlint/ast-node-types";
 
 export function parse(org: string): any {
+  // TODO: Define return value type.
   const ast = orga(org);
   const src = new StructuredSource(org);
-  const tr = traverse(ast);
-  tr.forEach(function (node) {
+  traverse(ast).forEach(function (node: TxtNode) {
     if (this.notLeaf) {
       delete node.parent;
 
@@ -41,6 +34,12 @@ export function parse(org: string): any {
         node.loc = positionCompensated;
         node.range = range;
         node.raw = org.slice(range[0], range[1]);
+        Object.defineProperty(node, "position", {
+          enumerable: false,
+          configurable: false,
+          writable: false,
+          value: position
+        });
       }
 
       // map `url` to Link node
@@ -48,7 +47,6 @@ export function parse(org: string): any {
         node.url = node.value;
       }
     }
-    removeUnusedProperties(node);
   });
-    return ast;
+  return ast;
 }
