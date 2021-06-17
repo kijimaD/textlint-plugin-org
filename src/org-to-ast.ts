@@ -2,13 +2,13 @@ import { parse as orga } from 'orga';
 import traverse from 'traverse';
 import StructuredSource from 'structured-source';
 import { nodeTypes } from './mapping';
-import { TxtNode } from '@textlint/ast-node-types';
+import { ASTNodeTypes, TxtNode } from "@textlint/ast-node-types";
 
 export function parse(org: string): any {
   // TODO: Define return value type.
   const ast = orga(org);
   const src = new StructuredSource(org);
-  traverse(ast).forEach(function (node) {
+  traverse(ast).forEach(function (node: TxtNode) {
     if (this.notLeaf) {
       delete node.parent;
 
