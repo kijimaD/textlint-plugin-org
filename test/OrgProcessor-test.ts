@@ -16,13 +16,12 @@ This is text.
       assert(result.type === Syntax.document);
     });
 
-    it('heading should Header', () => {
+    it('text should Paragraph', () => {
       const result = parse(`
-** Heading
+This is text.
       `);
-      const section = result.children[0];
-      const header = section.children[0];
-      assert.equal(header.type, Syntax.headline);
+      const target = result.children[0];
+      assert.equal(target.type, Syntax.paragraph);
     });
 
     it('list item should List', () => {
@@ -35,12 +34,13 @@ This is text.
       assert.equal(listItem.type, Syntax['list.item']);
     });
 
-    it('horizontal should HorizontalDef', () => {
+    it('heading should Header', () => {
       const result = parse(`
------
+** Heading
       `);
-      const target = result.children[0];
-      assert.equal(target.type, Syntax.hr);
+      const section = result.children[0];
+      const header = section.children[0];
+      assert.equal(header.type, Syntax.headline);
     });
 
     it('begin_src should CodeBlock', () => {
@@ -73,15 +73,15 @@ This is text.
       assert.equal(target.type, Syntax.block);
     });
 
-    it('text should Paragraph', () => {
+    it('horizontal should HorizontalDef', () => {
       const result = parse(`
-This is text.
+-----
       `);
       const target = result.children[0];
-      assert.equal(target.type, Syntax.paragraph);
+      assert.equal(target.type, Syntax.hr);
     });
 
-    // inline
+    // inline ================
 
     it('inline text should Str', () => {
       const result = parse(`
@@ -156,7 +156,7 @@ This is text.
         });
       });
 
-      it('should not comma check inside the code block.', () => {
+      it('should not comma check inside the code block', () => {
         const fixturePath = path.join(__dirname, '/fixtures/codeblock-test.org'); // eslint-disable-line
         return lintFile(fixturePath).then((results) => {
           assert(results.messages.length === 0);
