@@ -46,7 +46,7 @@ This is text.
     it('begin_src should CodeBlock', () => {
       const result = parse(`
 #+begin_src
-  const a = 1;
+const a = 1;
 #+end_src
       `);
       const target = result.children[0];
@@ -56,7 +56,7 @@ This is text.
     it('begin_comment should Codeblock', () => {
       const result = parse(`
 #+begin_comment
-  This is comment.
+This is comment.
 #+end_comment
       `);
       const target = result.children[0];
@@ -66,7 +66,7 @@ This is text.
     it('begin_quote should Codeblock', () => {
       const result = parse(`
 #+begin_quote
-  This is quote.
+This is quote.
 #+end_quote
       `);
       const target = result.children[0];
