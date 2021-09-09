@@ -92,7 +92,6 @@ This is quote.
       const paragraph = result.children[0];
       const link = paragraph.children[0];
       assert.equal(link.type, Syntax.link);
-      assert.equal(link.url, 'http://example.com/');
     });
 
     it('footnote should FootnoteReference', () => {
