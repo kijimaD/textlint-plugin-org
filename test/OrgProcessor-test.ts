@@ -73,25 +73,18 @@ This is quote.
 
     // inline ================
 
-    it('inline text should Str', () => {
-      const result = parse(`This is text.`);
-      const paragraph = result.children[0];
-      const text = paragraph.children[0];
-      assert.equal(text.type, Syntax['text.plain']);
-    });
-
     it('inline code should Code', () => {
-      const result = orga(`~const a = 1;~`);
+      const result = parse(`~const a = 1;~`);
       const paragraph = result.children[0];
       const code = paragraph.children[0];
-      assert.equal(code.type, Syntax['text.code']);
+      assert.equal(code.type, Syntax.code);
     });
 
     it('emphasis text should Emphasis', () => {
       const result = parse(`*This is text.*`);
       const paragraph = result.children[0];
       const emphasis = paragraph.children[0];
-      assert.equal(emphasis.type, Syntax['text.bold']);
+      assert.equal(emphasis.type, Syntax.bold);
     });
 
     it('link should Link', () => {

@@ -17,6 +17,9 @@ export function parse(org: string): any {
         node.type = nodeTypes[node.type as keyof typeof nodeTypes];
       }
 
+      if (node.style as keyof typeof nodeTypes) {
+        node.type = nodeTypes[node.style as keyof typeof nodeTypes];
+      }
       if (typeof node.type === 'undefined') {
         node.type = 'UNKNOWN';
       }
