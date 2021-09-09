@@ -41,7 +41,7 @@ describe('OrgProcessor-test', () => {
 const a = 1;
 #+end_src
       `);
-      const target = result.children[0];
+      const target = result.children[1];
       assert.equal(target.type, Syntax.block);
     });
 
@@ -51,7 +51,7 @@ const a = 1;
 This is comment.
 #+end_comment
       `);
-      const target = result.children[0];
+      const target = result.children[1];
       assert.equal(target.type, Syntax.block);
     });
 
@@ -61,7 +61,7 @@ This is comment.
 This is quote.
 #+end_quote
       `);
-      const target = result.children[0];
+      const target = result.children[1];
       assert.equal(target.type, Syntax.block);
     });
 
