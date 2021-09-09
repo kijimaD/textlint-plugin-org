@@ -10,24 +10,18 @@ const Syntax = require("../src/mapping").nodeTypes
 describe('OrgProcessor-test', () => {
   describe('#parse', () => {
     it('should return AST', () => {
-      const result = parse(`
-This is text.
-      `);
+      const result = parse(`This is text.`);
       assert(result.type === Syntax.document);
     });
 
     it('text should Paragraph', () => {
-      const result = parse(`
-This is text.
-      `);
+      const result = parse(`This is text.`);
       const target = result.children[0];
       assert.equal(target.type, Syntax.paragraph);
     });
 
     it('list item should List', () => {
-      const result = parse(`
-- List item
-      `);
+      const result = parse(`- List item`);
       const list = result.children[0];
       const listItem = list.children[0];
       assert.equal(list.type, 'List');
@@ -35,9 +29,7 @@ This is text.
     });
 
     it('heading should Header', () => {
-      const result = parse(`
-** Heading
-      `);
+      const result = parse(`** Heading`);
       const section = result.children[0];
       const header = section.children[0];
       assert.equal(header.type, Syntax.headline);
@@ -74,9 +66,7 @@ This is quote.
     });
 
     it('horizontal should HorizontalDef', () => {
-      const result = parse(`
------
-      `);
+      const result = parse(`-----`);
       const target = result.children[0];
       assert.equal(target.type, Syntax.hr);
     });
@@ -84,36 +74,28 @@ This is quote.
     // inline ================
 
     it('inline text should Str', () => {
-      const result = parse(`
-This is text.
-      `);
+      const result = parse(`This is text.`);
       const paragraph = result.children[0];
       const text = paragraph.children[0];
       assert.equal(text.type, Syntax['text.plain']);
     });
 
     it('inline code should Code', () => {
-      const result = parse(`
-~const a = 1;~
-      `);
+      const result = orga(`~const a = 1;~`);
       const paragraph = result.children[0];
       const code = paragraph.children[0];
       assert.equal(code.type, Syntax['text.code']);
     });
 
     it('emphasis text should Emphasis', () => {
-      const result = parse(`
-*This is text.*
-      `);
+      const result = parse(`*This is text.*`);
       const paragraph = result.children[0];
       const emphasis = paragraph.children[0];
       assert.equal(emphasis.type, Syntax['text.bold']);
     });
 
     it('link should Link', () => {
-      const result = parse(`
-[[http://example.com/][Example Domain]]
-      `);
+      const result = parse(`[[http://example.com/][Example Domain]]`);
       const paragraph = result.children[0];
       const link = paragraph.children[0];
       assert.equal(link.type, Syntax.link);
@@ -121,9 +103,7 @@ This is text.
     });
 
     it('footnote should FootnoteReference', () => {
-      const result = parse(`
-[fn:1] This is a footnote
-      `);
+      const result = parse(`[fn:1] This is a footnote`);
       const target = result.children[0];
       assert.equal(target.type, Syntax.footnote);
     });
