@@ -151,7 +151,7 @@ This is text.
       it('should report lint error', () => {
         const fixturePath = path.join(__dirname, '/fixtures/lint-error.org'); // eslint-disable-line
         return lintFile(fixturePath).then((results) => {
-          assert(results.messages.length > 0);
+          assert(results.messages.length === 1);
           assert(results.filePath === fixturePath);
         });
       });
