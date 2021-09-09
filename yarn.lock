@@ -1779,14 +1779,14 @@ optionator@^0.9.1:
     type-check "^0.4.0"
     word-wrap "^1.2.3"
 
-orga@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/orga/-/orga-3.0.0.tgz#7b2e70e25d6dd1ecf7918b9f6717785636a96b0b"
-  integrity sha512-tEXk6MWNn9H5e4PKcX3udd6RHkPVyL362AcrjdsyTnS8mVxcz8EJPvD8E0s2l1LcfIy8wHkx/QJXDtnZXGO/aA==
+orga@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/orga/-/orga-3.1.1.tgz#ed7a8b3293e1f8476f8c6f34d93cf73b90231761"
+  integrity sha512-gQ8sJpKEZAsGLyFlMlZnqT9yGtn6QlyS0nK4MbrwLSXsZIK8I1U8QYU3f6mD+lRg54ZtbcAbBOOI00c2eLZcng==
   dependencies:
     date-fns "^2.22.1"
     date-fns-tz "^1.1.4"
-    text-kit "3.0.0"
+    text-kit "3.0.1"
 
 p-limit@^1.1.0:
   version "1.3.0"
@@ -2385,10 +2385,10 @@ table@^6.0.9:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
-text-kit@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/text-kit/-/text-kit-3.0.0.tgz#be8afa1fcb2ee67cc14c7cf2b3bc9676efbd0103"
-  integrity sha512-vOwhdLJ3mlz74k9e/v0fKbLtuHIXky4eGtvIfgQfl/ybeM9OjNfiQz6lNbA7GBfwp0/4lX4rwQwCOLS1X9mArA==
+text-kit@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/text-kit/-/text-kit-3.0.1.tgz#e639e5ee643a4f080b06e049b443cbc84d22bb6a"
+  integrity sha512-IIhA8WnPb2EMRIwzl7Nqg7jE9q4UkCTKCg65LBsTBI4/V5yDjo5u/gW+uIRGUKwqzON0npXLGscRfpALa8bh7w==
 
 text-table@^0.2.0:
   version "0.2.0"
