@@ -2,7 +2,7 @@ import { parse as orga } from 'orga';
 import traverse from 'traverse';
 import StructuredSource from 'structured-source';
 import { nodeTypes } from './mapping';
-import { ASTNodeTypes, TxtNode } from "@textlint/ast-node-types";
+import { TxtNode } from "@textlint/ast-node-types";
 
 export function parse(org: string): any {
   // TODO: Define return value type.
@@ -17,6 +17,9 @@ export function parse(org: string): any {
         node.type = nodeTypes[node.type as keyof typeof nodeTypes];
       }
 
+      if (node.style as keyof typeof nodeTypes) {
+        node.type = nodeTypes[node.style as keyof typeof nodeTypes];
+      }
       if (typeof node.type === 'undefined') {
         node.type = 'UNKNOWN';
       }

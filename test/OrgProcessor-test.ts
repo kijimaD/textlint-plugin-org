@@ -10,24 +10,18 @@ const Syntax = require("../src/mapping").nodeTypes
 describe('OrgProcessor-test', () => {
   describe('#parse', () => {
     it('should return AST', () => {
-      const result = parse(`
-This is text.
-      `);
+      const result = parse(`This is text.`);
       assert(result.type === Syntax.document);
     });
 
     it('text should Paragraph', () => {
-      const result = parse(`
-This is text.
-      `);
+      const result = parse(`This is text.`);
       const target = result.children[0];
       assert.equal(target.type, Syntax.paragraph);
     });
 
     it('list item should List', () => {
-      const result = parse(`
-- List item
-      `);
+      const result = parse(`- List item`);
       const list = result.children[0];
       const listItem = list.children[0];
       assert.equal(list.type, 'List');
@@ -35,9 +29,7 @@ This is text.
     });
 
     it('heading should Header', () => {
-      const result = parse(`
-** Heading
-      `);
+      const result = parse(`** Heading`);
       const section = result.children[0];
       const header = section.children[0];
       assert.equal(header.type, Syntax.headline);
@@ -49,7 +41,7 @@ This is text.
 const a = 1;
 #+end_src
       `);
-      const target = result.children[0];
+      const target = result.children[1];
       assert.equal(target.type, Syntax.block);
     });
 
@@ -59,7 +51,7 @@ const a = 1;
 This is comment.
 #+end_comment
       `);
-      const target = result.children[0];
+      const target = result.children[1];
       assert.equal(target.type, Syntax.block);
     });
 
@@ -69,61 +61,41 @@ This is comment.
 This is quote.
 #+end_quote
       `);
-      const target = result.children[0];
+      const target = result.children[1];
       assert.equal(target.type, Syntax.block);
     });
 
     it('horizontal should HorizontalDef', () => {
-      const result = parse(`
------
-      `);
+      const result = parse(`-----`);
       const target = result.children[0];
       assert.equal(target.type, Syntax.hr);
     });
 
     // inline ================
 
-    it('inline text should Str', () => {
-      const result = parse(`
-This is text.
-      `);
-      const paragraph = result.children[0];
-      const text = paragraph.children[0];
-      assert.equal(text.type, Syntax['text.plain']);
-    });
-
     it('inline code should Code', () => {
-      const result = parse(`
-~const a = 1;~
-      `);
+      const result = parse(`~const a = 1;~`);
       const paragraph = result.children[0];
       const code = paragraph.children[0];
-      assert.equal(code.type, Syntax['text.code']);
+      assert.equal(code.type, Syntax.code);
     });
 
     it('emphasis text should Emphasis', () => {
-      const result = parse(`
-*This is text.*
-      `);
+      const result = parse(`*This is text.*`);
       const paragraph = result.children[0];
       const emphasis = paragraph.children[0];
-      assert.equal(emphasis.type, Syntax['text.bold']);
+      assert.equal(emphasis.type, Syntax.bold);
     });
 
     it('link should Link', () => {
-      const result = parse(`
-[[http://example.com/][Example Domain]]
-      `);
+      const result = parse(`[[http://example.com/][Example Domain]]`);
       const paragraph = result.children[0];
       const link = paragraph.children[0];
       assert.equal(link.type, Syntax.link);
-      assert.equal(link.url, 'http://example.com/');
     });
 
     it('footnote should FootnoteReference', () => {
-      const result = parse(`
-[fn:1] This is a footnote
-      `);
+      const result = parse(`[fn:1] This is a footnote`);
       const target = result.children[0];
       assert.equal(target.type, Syntax.footnote);
     });
@@ -151,7 +123,7 @@ This is text.
       it('should report lint error', () => {
         const fixturePath = path.join(__dirname, '/fixtures/lint-error.org'); // eslint-disable-line
         return lintFile(fixturePath).then((results) => {
-          assert(results.messages.length > 0);
+          assert(results.messages.length === 3);
           assert(results.filePath === fixturePath);
         });
       });
