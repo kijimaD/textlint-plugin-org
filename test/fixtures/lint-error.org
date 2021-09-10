@@ -23,11 +23,3 @@ aaaaa,aaaaa,aaaaa,aaaaa,aaaaa,aaaaa
 - aaaaa,aaaaa,aaaaa,aaaaa,aaaaa,aaaaa
 
 # aaaaa,aaaaa,aaaaa,aaaaa,aaaaa,aaaaa
-
-** Check
-CLOSED: [2021-09-10 Fri 17:49]
-# If exist timestamp on AST, textlint try to find parent node, and fail.
-# TypeError: Cannot redefine property: parent
-
-** TODO aaaaa,aaaaa,aaaaa,aaaaa,aaaaa,aaaaa
-** DONE aaaaa,aaaaa,aaaaa,aaaaa,aaaaa,aaaaa
