@@ -9,9 +9,9 @@ export const nodeTypes = {
   block: ASTNodeTypes.CodeBlock,
   hr: ASTNodeTypes.HorizontalRule,
   // inline block
-  plain: ASTNodeTypes.Str,
-  code: ASTNodeTypes.Code,
-  bold: ASTNodeTypes.Emphasis,
+  'text.plain': ASTNodeTypes.Str,
+  'text.code': ASTNodeTypes.Code,
+  'text.bold': ASTNodeTypes.Emphasis,
   link: ASTNodeTypes.Link,
   footnote: 'FootnoteReference',
 };
