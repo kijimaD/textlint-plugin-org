@@ -10,7 +10,9 @@ export function parse(org: string): any {
   const src = new StructuredSource(org);
   traverse(ast).forEach(function (node: TxtNode) {
     if (this.notLeaf) {
-      delete node.parent;
+      // If exist timestamp on AST, textlint try to find parent node, and fail.
+      // TypeError: Cannot redefine property: parent
+      delete node.timestamp;
 
       // AST node has type and position
       if (node.type && node.position) {
