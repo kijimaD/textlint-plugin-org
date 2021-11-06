@@ -1,10 +1,10 @@
 import { parse as orga } from 'orga';
 import traverse from 'traverse';
 import StructuredSource from 'structured-source';
-import { nodeTypes } from './mapping';
-import { ASTNodeTypes, TxtNode } from "@textlint/ast-node-types";
+import { nodeTypes, Loc } from './mapping';
+import { TxtNode } from "@textlint/ast-node-types";
 
-export function parse(org: string): any {
+export function parse(org: string): any { // eslint-disable-line
   // TODO: Define return value type.
   const ast = orga(org);
   const src = new StructuredSource(org);
@@ -23,7 +23,9 @@ export function parse(org: string): any {
 
       // map `range`, `loc` and `raw` to node
       if (typeof node.position === 'object') {
-        const { position } = node;
+        const position = node.position as Loc;
+        // Maybe prefer `const { position } = node;`, pure functional. But can't resolve eslint caution...
+
         // TxtNode's line start with 1
         // TxtNode's column start with 0
         const positionCompensated = {
@@ -44,7 +46,7 @@ export function parse(org: string): any {
 
       // map `url` to Link node
       if (node.type === 'Link' && typeof node.value !== 'undefined') {
-        node.url = node.value;
+        node.url = node.value as string;
       }
     }
   });

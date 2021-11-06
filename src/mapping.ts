@@ -15,3 +15,12 @@ export const nodeTypes = {
   link: ASTNodeTypes.Link,
   footnote: 'FootnoteReference',
 };
+
+export type LineColumn = {
+  line: number;
+  column: number;
+}
+export type Loc = {
+  start: LineColumn;
+  end: LineColumn;
+}
