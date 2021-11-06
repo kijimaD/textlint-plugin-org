@@ -2,9 +2,9 @@ import { parse as orga } from 'orga';
 import traverse from 'traverse';
 import StructuredSource from 'structured-source';
 import { nodeTypes } from './mapping';
-import { ASTNodeTypes, TxtNode } from "@textlint/ast-node-types";
+import { TxtNode } from "@textlint/ast-node-types";
 
-export function parse(org: string): any {
+export function parse(org: string): any { // eslint-disable-line
   // TODO: Define return value type.
   const ast = orga(org);
   const src = new StructuredSource(org);
