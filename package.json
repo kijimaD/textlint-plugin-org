@@ -1,6 +1,6 @@
 {
     "name": "textlint-plugin-org",
-    "version": "0.2.3",
+    "version": "0.3.0",
     "description": "Textlint plugin for Org mode",
     "repository": {
         "type": "git",
