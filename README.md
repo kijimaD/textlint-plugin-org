@@ -19,6 +19,7 @@ $ npm install textlint-plugin-org
 
 Manually add text plugin to do following:
 
+edit `.textlintrc`
 ```json
 {
     "plugins": [
