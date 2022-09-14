@@ -45,3 +45,11 @@ $ npm run test
 ```
 $ npm run lint
 ```
+
+## Release
+
+```
+$ npm run build
+$ npm version patch
+$ npm publish
+```
