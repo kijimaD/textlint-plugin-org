@@ -9,6 +9,18 @@ Add Org mode support for [textlint](https://github.com/textlint/textlint "textli
 
 What is textlint plugin? Please see https://github.com/textlint/textlint/blob/master/docs/plugin.md
 
+## Try run by Docker
+
+```shell
+$ docker run -v "$(pwd)":/work \
+             -w /work \
+             --rm -it ghcr.io/kijimad/textlint-plugin-org \
+             textlint \
+             --plugin org \
+             --rule textlint-rule-preset-ja-technical-writing \
+             *.org
+```
+
 ## Install
 
 ```shell
@@ -17,9 +29,7 @@ $ npm install textlint-plugin-org
 
 ## Usage
 
-Manually add text plugin to do following:
-
-edit `.textlintrc`
+Via `.textlintrc`(Recommended)
 ```json
 {
     "plugins": [
@@ -28,13 +38,17 @@ edit `.textlintrc`
 }
 ```
 
-Lint Org file with textlint
-
 ```shell
 $ textlint test.org
 ```
 
-## Tests
+
+Via CLI
+```shell
+$ textlint --plugin org test.org
+```
+
+## Test
 
 ```
 $ npm run test
