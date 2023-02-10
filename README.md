@@ -51,5 +51,6 @@ $ npm run lint
 ```
 $ npm run build
 $ npm version patch
+$ npm login
 $ npm publish
 ```

@@ -1,0 +1,31 @@
+name: Image
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    outputs:
+      git-tag: ${{ steps.git-tag.outputs.git-tag }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Get git tag(short)
+        id: git-tag
+        run: |
+          GIT_TAG=$(git rev-parse --short HEAD)
+          echo "::set-output name=git-tag::$GIT_TAG"
+
+  release_image:
+    needs: tag
+    uses: ./.github/workflows/docker.yml
+    with:
+      image: ghcr.io/kijimad/textlint-plugin-org:${{ needs.tag.outputs.git-tag }},ghcr.io/kijimad/textlint-plugin-org:latest
+      target: run
+    secrets:
+      WRITE_PACKAGE: ${{ secrets.WRITE_PACKAGE }}
