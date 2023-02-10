@@ -31,7 +31,7 @@
         "@textlint/ast-node-types": "^12.2.2",
         "@types/date-fns": "^2.6.0",
         "orga": "2.4.9",
-        "structured-source": "^3.0.2",
+        "structured-source": "^4.0.0",
         "traverse": "^0.6.6"
     },
     "devDependencies": {

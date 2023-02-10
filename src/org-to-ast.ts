@@ -1,6 +1,6 @@
 import { parse as orga } from 'orga';
 import traverse from 'traverse';
-import StructuredSource from 'structured-source';
+import { StructuredSource } from 'structured-source';
 import { nodeTypes, Loc } from './mapping';
 import { TxtNode } from "@textlint/ast-node-types";
 
