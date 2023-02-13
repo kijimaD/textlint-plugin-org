@@ -36,7 +36,7 @@
         "traverse": "^0.6.6"
     },
     "devDependencies": {
-        "@textlint/ast-tester": "^12.0.0",
+        "@textlint/ast-tester": "^13.3.0",
         "@textlint/kernel": "^13.2.0",
         "@types/jest": "^29.0.0",
         "@types/power-assert": "^1.5.3",
