@@ -28,7 +28,7 @@
         "lint": "npx eslint src/**/*.ts"
     },
     "dependencies": {
-        "@textlint/ast-node-types": "^12.2.2",
+        "@textlint/ast-node-types": "^13.4.0",
         "@types/date-fns": "^2.6.0",
         "@types/node": "^20.2.3",
         "orga": "2.4.9",
