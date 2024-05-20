@@ -43,7 +43,7 @@
         "@types/traverse": "^0.6.32",
         "@typescript-eslint/eslint-plugin": "^5.2.0",
         "@typescript-eslint/parser": "^5.2.0",
-        "eslint": "^8.1.0",
+        "eslint": "^9.3.0",
         "eslint-plugin-import": "^2.23.4",
         "mocha": "^10.0.0",
         "power-assert": "^1.6.1",
