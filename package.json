@@ -30,7 +30,7 @@
     "dependencies": {
         "@textlint/ast-node-types": "^12.2.2",
         "@types/date-fns": "^2.6.0",
-        "@types/node": "^20.2.3",
+        "@types/node": "^22.7.2",
         "orga": "2.4.9",
         "structured-source": "^4.0.0",
         "traverse": "^0.6.6"
